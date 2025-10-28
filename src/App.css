@@ -1,0 +1,277 @@
+/* Root Container */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  background: transparent;
+}
+
+/* Modern Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #B02A30 0%, #c44d52 100%);
+  color: #ffffff;
+  padding: 1rem 0;
+  box-shadow: 0 2px 20px rgba(176, 42, 48, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.navbar__wrapper {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.navbar__brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.navbar__brand a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.navbar__brand a:hover {
+  opacity: 0.9;
+}
+
+.navbar__links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__links li {
+  position: relative;
+}
+
+.navbar__links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar__links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.navbar__links a:hover::after {
+  width: 100%;
+}
+
+.navbar__links a:hover {
+  opacity: 0.9;
+}
+
+/* Modern Footer */
+.footer {
+  background: linear-gradient(135deg, #005B75 0%, #007c9d 100%);
+  color: #ffffff;
+  padding: 3rem 0 1.5rem 0;
+  margin-top: auto;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  box-shadow: 0 -2px 20px rgba(44, 129, 128, 0.3);
+}
+
+.footer__wrapper {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Footer Content Layout */
+.footer__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer__section {
+  text-align: left;
+}
+
+.footer__section h3 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer__links a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.footer__links a:hover {
+  color: #ffffff;
+  padding-left: 5px;
+  text-decoration: underline;
+}
+
+.footer__contact {
+  margin-top: 0;
+  display: block;
+}
+
+.footer__contact p {
+  margin: 0.75rem 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer__contact a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer__contact a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Footer Bottom Section */
+.footer__bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 2rem;
+}
+
+.footer__bottom p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.footer__bottom p:first-child {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Utility: make element span full viewport width even inside centered container */
+.full-bleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .navbar__links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .main-content {
+    padding: 0 1rem;
+  }
+
+  .footer {
+    padding: 2rem 0 1rem 0;
+  }
+
+  .footer__content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .footer__section {
+    text-align: center;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer__contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer__bottom {
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+  }
+}
+
+/* Remove old styles */
+.logo,
+.card,
+.read-the-docs {
+  display: none;
+}
