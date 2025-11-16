@@ -23,6 +23,8 @@ function App() {
       : 'light';
   });
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     window.localStorage.setItem('ygt-theme', theme);
@@ -30,6 +32,14 @@ function App() {
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen((prev) => !prev);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
   };
 
   const isDark = theme === 'dark';
@@ -55,7 +65,7 @@ function App() {
         <nav className="navbar">
           <div className="navbar__wrapper">
             <div className="navbar__brand">
-              <Link to="/">
+              <Link to="/" onClick={closeMobileMenu}>
                 <img
                   src={navbarLogoSrc}
                   alt="Yadardageeta Traders Logo"
@@ -64,27 +74,42 @@ function App() {
                 />
               </Link>
             </div>
-            <ul className="navbar__links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/services">Services</Link></li>
-              <li><Link to="/payment">Payment</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-              <li><a href="https://api1.vyaparapp.in/store/YADARDAGEETATRADERS" target="_blank" rel="noopener noreferrer">Online Store</a></li>
-            </ul>
-
+            
             <button
               type="button"
-              className={`theme-toggle ${isDark ? 'theme-toggle--dark' : 'theme-toggle--light'}`}
-              onClick={toggleTheme}
-              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              className={`mobile-menu-toggle ${mobileMenuOpen ? 'mobile-menu-toggle--open' : ''}`}
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
+              aria-expanded={mobileMenuOpen}
             >
-              <span className="theme-toggle__track">
-                <span className="theme-toggle__thumb" />
-                <span className="theme-toggle__icon theme-toggle__icon--sun">☀️</span>
-                <span className="theme-toggle__icon theme-toggle__icon--moon">🌙</span>
-              </span>
+              <span></span>
+              <span></span>
+              <span></span>
             </button>
+
+            <div className={`navbar__menu ${mobileMenuOpen ? 'navbar__menu--open' : ''}`}>
+              <ul className="navbar__links">
+                <li><Link to="/" onClick={closeMobileMenu}>Home</Link></li>
+                <li><Link to="/about" onClick={closeMobileMenu}>About</Link></li>
+                <li><Link to="/services" onClick={closeMobileMenu}>Services</Link></li>
+                <li><Link to="/payment" onClick={closeMobileMenu}>Payment</Link></li>
+                <li><Link to="/contact" onClick={closeMobileMenu}>Contact</Link></li>
+                <li><a href="https://api1.vyaparapp.in/store/YADARDAGEETATRADERS" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu}>Online Store</a></li>
+              </ul>
+
+              <button
+                type="button"
+                className={`theme-toggle ${isDark ? 'theme-toggle--dark' : 'theme-toggle--light'}`}
+                onClick={toggleTheme}
+                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                <span className="theme-toggle__track">
+                  <span className="theme-toggle__thumb" />
+                  <span className="theme-toggle__icon theme-toggle__icon--sun">☀️</span>
+                  <span className="theme-toggle__icon theme-toggle__icon--moon">🌙</span>
+                </span>
+              </button>
+            </div>
           </div>
         </nav>
 

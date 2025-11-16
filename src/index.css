@@ -68,6 +68,22 @@ body {
   min-height: 100vh;
   background: var(--color-bg);
   color: var(--color-text);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+/* Improve touch targets on mobile */
+a, button, input, textarea, select {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0, 102, 204, 0.2);
+}
+
+/* Smooth scrolling on mobile */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
