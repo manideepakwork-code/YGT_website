@@ -3,6 +3,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
 #root {
@@ -26,15 +28,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #ffffff;
-  color: #333333;
+  background: var(--color-navbar-bg);
+  color: var(--color-navbar-text);
   padding: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
   position: sticky;
   top: 0;
   z-index: 1000;
   font-weight: 400;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--color-border-subtle);
+  backdrop-filter: blur(16px);
 }
 
 .navbar__wrapper {
@@ -56,7 +59,7 @@
 }
 
 .navbar__brand a {
-  color: #003366;
+  color: var(--color-primary);
   text-decoration: none;
   transition: opacity 0.3s ease;
   letter-spacing: -0.5px;
@@ -71,12 +74,12 @@
 }
 
 .navbar__logo {
-  height: 50px;
+  height: 64px;
   width: auto;
   object-fit: cover;
   object-position: top center;
-  transform: scale(1.2);
-  transform-origin: top center;
+  transform: scale(1.25);
+  transform-origin: center;
 }
 
 .navbar__links {
@@ -93,7 +96,7 @@
 }
 
 .navbar__links a {
-  color: #333333;
+  color: var(--color-navbar-text);
   text-decoration: none;
   font-weight: 400;
   font-size: 0.95rem;
@@ -105,8 +108,8 @@
 }
 
 .navbar__links a:hover {
-  color: #0066cc;
-  background-color: #f5f5f5;
+  color: var(--color-primary);
+  background-color: var(--color-primary-soft);
 }
 
 .navbar__links a::after {
@@ -116,7 +119,7 @@
   left: 0;
   width: 0;
   height: 3px;
-  background: #0066cc;
+  background: var(--color-primary);
   transition: width 0.3s ease;
 }
 
@@ -126,12 +129,12 @@
 
 /* Modern Footer - Donaldson Style */
 .footer {
-  background: #1a1a1a;
+  background: var(--color-footer-bg);
   color: #ffffff;
   padding: 4rem 0 2rem 0;
   margin-top: auto;
   font-weight: 400;
-  border-top: 3px solid #0066cc;
+  border-top: 3px solid var(--color-footer-border);
 }
 
 .footer__wrapper {
@@ -160,10 +163,20 @@
 }
 
 .footer__logo {
-  max-width: 200px;
+  max-width: 240px;
   height: auto;
   object-fit: contain;
   opacity: 0.95;
+}
+
+/* Make logo feel a bit larger and more prominent in dark theme */
+[data-theme="dark"] .navbar__logo {
+  height: 72px;
+  transform: scale(1.3);
+}
+
+[data-theme="dark"] .footer__logo {
+  max-width: 260px;
 }
 
 .footer__logo-text {
@@ -262,6 +275,79 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+}
+
+/* Theme toggle control */
+.theme-toggle {
+  margin-left: 1.5rem;
+  padding: 0;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  position: relative;
+  overflow: visible;
+}
+
+.theme-toggle__track {
+  position: relative;
+  width: 64px;
+  height: 32px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.35);
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(14px);
+}
+
+.theme-toggle__thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #e5e7eb 45%, #cbd5f5 100%);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.45);
+  transition: transform 0.28s cubic-bezier(0.4, 0.0, 0.2, 1),
+    background 0.28s ease, box-shadow 0.28s ease;
+}
+
+.theme-toggle--dark .theme-toggle__thumb {
+  transform: translateX(30px);
+  background: radial-gradient(circle at 30% 30%, #38bdf8, #0ea5e9 45%, #6366f1 100%);
+}
+
+.theme-toggle__icon {
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.theme-toggle__icon--sun {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.theme-toggle--dark .theme-toggle__icon--sun {
+  opacity: 0.3;
+  transform: translateX(-4px) scale(0.9);
+}
+
+.theme-toggle__icon--moon {
+  opacity: 0.35;
+  transform: translateX(4px) scale(0.9);
+}
+
+.theme-toggle--dark .theme-toggle__icon--moon {
+  opacity: 1;
+  transform: translateX(0) scale(1);
 }
 
 /* Responsive Design */

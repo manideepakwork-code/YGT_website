@@ -1,11 +1,28 @@
 :root {
+  --color-bg: #ffffff;
+  --color-bg-elevated: #ffffff;
+  --color-bg-subtle: #f8f9fa;
+  --color-text: #1f2933;
+  --color-text-muted: #6b7280;
+  --color-primary: #0066cc;
+  --color-primary-soft: #e0f2ff;
+  --color-border-subtle: #e5e7eb;
+  --color-navbar-bg: #ffffff;
+  --color-navbar-text: #1f2933;
+  --color-footer-bg: #000000;
+  --color-footer-border: #000000;
+  --color-card-shadow: rgba(15, 23, 42, 0.08);
+  --color-hero-overlay: linear-gradient(135deg, rgba(0, 51, 102, 0.7) 0%, rgba(0, 64, 128, 0.6) 50%, rgba(0, 102, 204, 0.55) 100%);
+  --color-contact-gradient: linear-gradient(135deg, #003366 0%, #004080 50%, #0066cc 100%);
+  --color-submit-button-bg: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+  --shadow-elevated: 0 4px 20px rgba(15, 23, 42, 0.08);
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.6;
   font-weight: 400;
-
   color-scheme: light;
-  color: #333333;
-  background-color: #ffffff;
+  color: var(--color-text);
+  background-color: var(--color-bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,9 +30,32 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+[data-theme="dark"] {
+  /* Deep black background for dark theme */
+  --color-bg: #000000;
+  --color-bg-elevated: #000000;
+  --color-bg-subtle: #000000;
+  --color-text: #e5e7eb;
+  --color-text-muted: #9ca3af;
+  --color-primary: #38bdf8;
+  --color-primary-soft: rgba(56, 189, 248, 0.1);
+  --color-border-subtle: rgba(148, 163, 184, 0.35);
+  --color-navbar-bg: rgba(0, 0, 0, 0.92);
+  --color-navbar-text: #e5e7eb;
+  --color-footer-bg: #000000;
+  --color-footer-border: #000000;
+  --color-card-shadow: rgba(15, 23, 42, 0.8);
+  --color-hero-overlay: radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), rgba(15, 23, 42, 0.9) 55%, rgba(0, 0, 0, 1) 100%);
+  --color-contact-gradient: radial-gradient(circle at top left, #020617 0%, #000000 50%, #000000 100%);
+  --color-submit-button-bg: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 60%, #6366f1 100%);
+  --shadow-elevated: 0 24px 80px rgba(15, 23, 42, 0.85);
+
+  color-scheme: dark;
+}
+
 a {
   font-weight: 500;
-  color: #0066cc;
+  color: var(--color-primary);
   text-decoration: inherit;
 }
 a:hover {
@@ -26,7 +66,8 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #ffffff;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -42,10 +83,16 @@ body,
   scrollbar-width: none;  /* Firefox */
 }
 
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  font-weight: 700;
   letter-spacing: -0.5px;
 }
 
@@ -56,7 +103,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-primary);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -70,8 +117,8 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #333333;
-    background-color: #ffffff;
+    color: var(--color-text);
+    background-color: var(--color-bg);
   }
   a:hover {
     color: #004080;
